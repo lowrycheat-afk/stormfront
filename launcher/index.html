@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StormFront</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+    <style>
+      body {
+        background-color: #121212;
+        overflow: hidden;
+      }
+
+      body:not(.loaded) div#app {
+        opacity: 0 !important;
+        visibility: hidden;
+        transition: opacity 0.2s ease-in-out;
+      }
+
+      body.loaded div#app {
+        transition: opacity 0.2s ease-in-out;
+        opacity: 1;
+        visibility: visible;
+      }
+
+      div.view:not(.active) {
+        display: none;
+      }
+
+      div.loading,
+      div.maintenance,
+      div.update {
+        position: fixed;
+        top: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 100vw;
+        background-color: #121212;
+        transition: opacity 0.2s ease-in-out;
+        will-change: opacity;
+      }
+
+      div.loading {
+        opacity: 1;
+      }
+
+      div.loading.loaded {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      div.maintenance,
+      div.update {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      div.maintenance.loaded,
+      div.update.loaded {
+        opacity: 1;
+        pointer-events: all;
+      }
+    </style>
+    <script type="module" src="/src/main.js"></script>
+  </head>
+  <body>
+    <div id="view-loading" class="loading" data-view="loading">
+      <div class="loading-card">
+        <p class="spinner"><i class="fa-solid fa-circle-notch fa-spin"></i></p>
+        <p class="text">Loading...</p>
+      </div>
+    </div>
+
+    <div id="view-maintenance" class="maintenance" data-view="maintenance">
+      <div class="maintenance-card">
+        <p class="gears"><i class="fa-solid fa-gears"></i></p>
+        <h3>Maintenance</h3>
+        <p class="dates" id="maintenance-dates"></p>
+        <p class="text" id="maintenance-reason"></p>
+      </div>
+    </div>
+
+    <div id="view-update" class="update" data-view="update">
+      <div class="maintenance-card">
+        <p class="up"><i class="fa-solid fa-circle-up"></i></p>
+        <h3>An update is available</h3>
+        <p class="text" id="update-text">Please wait while we update your launcher...</p>
+        <div class="progress-container" id="update-progress-container">
+          <div class="progress-info">
+            <span id="update-progress-label">Downloading...</span>
+            <span id="update-progress-percent">0%</span>
+          </div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fill" id="update-progress-bar"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="app">
+      <div class="app-background"></div>
+
+      <div id="view-login" class="view" data-view="login">
+        <div class="home-header">
+          <div class="header-title">
+            <i class="fa-solid fa-puzzle-piece"></i>
+            <span>StormFront | Loader</span>
+          </div>
+          <div class="window-controls">
+            <button class="window-btn minimize"><i class="fa-solid fa-minus"></i></button>
+            <button class="window-btn close"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+        </div>
+
+        <div class="login-shell">
+          <div class="login-card">
+            <h1>Sign In</h1>
+            <p class="subtitle" id="login-subtitle">Use your StormFront account to continue.</p>
+
+            <form id="login-form" class="login-form">
+              <label class="login-field">
+                <span>Login or Email</span>
+                <input id="login-input" type="text" autocomplete="username" placeholder="Enter login or email" />
+              </label>
+
+              <label class="login-field">
+                <span>Password</span>
+                <input id="password-input" type="password" autocomplete="current-password" placeholder="Enter password" />
+              </label>
+
+              <button id="btn-login" type="submit" class="btn-primary login-action">Sign In</button>
+            </form>
+
+            <button id="btn-login-site" type="button" class="btn-secondary login-action">
+              <i class="fa-solid fa-globe"></i>
+              <span>Sign In Through Site</span>
+            </button>
+
+            <button id="btn-login-offline" type="button" class="btn-secondary login-action">
+              <i class="fa-solid fa-user-astronaut"></i>
+              <span>Play Offline</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div id="view-home" class="view" data-view="home">
+        <div class="home-header">
+          <div class="header-title">
+            <i class="fa-solid fa-puzzle-piece"></i>
+            <span>StormFront | Loader</span>
+          </div>
+          <div class="window-controls">
+            <button class="window-btn minimize"><i class="fa-solid fa-minus"></i></button>
+            <button class="window-btn close"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+        </div>
+
+        <div class="home-container">
+          <aside class="home-sidebar">
+            <div class="sidebar-section">
+              <h2 class="section-title">Minecraft <span class="version-tag">1.20.1</span></h2>
+              <p class="section-description">StormFront — это хардкорный постапокалиптический проект с упором на реализм и военную тематику. Здесь каждый рейд может стать последним, а цена ошибки — потеря всего. Зомби — реальная угроза.
+
+                Выживание заставляет объединяться в отряды, планировать маршруты и укреплять базы.
+
+                Экономика на ресурсах и контроль территорий без лишних «фантазийных» элементов.
+
+                Оружие с честной отдачей, износом и баллистикой. Патроны — дефицит.
+              </p>
+            </div>
+
+            <div class="sidebar-section">
+              <h3 class="social-title"><i class="fa-solid fa-share-nodes"></i> Our social networks</h3>
+              <div class="social-links">
+                <a href="https://discord.gg/FsQUAaQCxy" target="_blank" class="social-btn discord" title="Discord">
+                  <i class="fa-brands fa-discord"></i>
+                </a>
+                <a href="https://t.me/mcLastFront" target="_blank" class="social-btn telegram" title="Telegram">
+                  <i class="fa-brands fa-telegram"></i>
+                </a>
+                <a href="https://lastfront.ru" target="_blank" class="social-btn website" title="Website">
+                  <i class="fa-solid fa-globe"></i>
+                </a>
+              </div>
+            </div>
+
+            <div class="sidebar-section account-section">
+              <h3 class="account-title"><i class="fa-solid fa-user"></i> Your account</h3>
+              <div class="account-card">
+                <button id="btn-open-profile" class="account-avatar-button" type="button" title="Open profile on site">
+                  <img src="https://minotar.net/helm/Steve/64" id="user-avatar" class="account-avatar" alt="Avatar" />
+                </button>
+                <div class="account-info">
+                  <strong id="user-name" class="account-name">Not signed in</strong>
+                  <span id="user-role" class="account-role"></span>
+                </div>
+                <button id="btn-logout" class="account-logout" type="button" title="Log out">
+                  <i class="fa-solid fa-right-from-bracket"></i>
+                </button>
+              </div>
+            </div>
+          </aside>
+
+          <main class="home-main">
+            <div class="preview-card">
+              <img src="/src/static/images/content.png" alt="Preview" class="preview-image" />
+            </div>
+
+            <div class="launch-controls">
+              <button id="btn-play" class="btn-launch">
+                <div class="launch-progress" id="launch-progress-fill"></div>
+                <span class="launch-text">
+                  <i class="fa-solid fa-play"></i>
+                  <span id="launch-text">Launch</span>
+                </span>
+              </button>
+              <button id="btn-settings" class="btn-settings-icon" title="Settings">
+                <i class="fa-solid fa-gear"></i>
+              </button>
+            </div>
+          </main>
+        </div>
+      </div>
+
+      <div id="view-settings" class="view overlay" data-view="settings">
+        <div class="settings-modal">
+          <div class="settings-header">
+            <h2>Settings</h2>
+            <button id="btn-close-settings" class="btn-close-settings">
+              <i class="fa-fw fa-solid fa-xmark"></i>
+            </button>
+          </div>
+
+          <main class="settings-content">
+            <div class="setting-group">
+              <label><i class="fa-fw fa-solid fa-memory"></i>&nbsp;&nbsp;Allocated RAM</label>
+
+              <div class="dual-slider-container">
+                <div class="slider-track"></div>
+                <div class="slider-fill" id="ram-track-fill"></div>
+
+                <input type="range" id="ram-min" min="0.5" max="16" step="0.5" value="2" />
+                <input type="range" id="ram-max" min="0.5" max="16" step="0.5" value="8" />
+              </div>
+
+              <div class="ram-labels">
+                <span id="ram-min-label">2 GB</span>
+                <span id="ram-max-label">8 GB</span>
+              </div>
+            </div>
+
+            <div class="setting-group region-setting">
+              <label id="download-region-label"><i class="fa-fw fa-solid fa-globe"></i>&nbsp;&nbsp;Download region</label>
+              <div id="download-region" class="custom-select" data-value="germany">
+                <button class="custom-select-toggle" type="button" aria-labelledby="download-region-label download-region-value" aria-haspopup="listbox" aria-expanded="false">
+                  <span id="download-region-value">Germany</span>
+                  <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                </button>
+                <div class="custom-select-menu" role="listbox" aria-labelledby="download-region-label">
+                  <button class="custom-select-option selected" type="button" role="option" aria-selected="true" data-value="germany">
+                    <span>Germany</span>
+                    <i class="fa-solid fa-check" aria-hidden="true"></i>
+                  </button>
+                  <button class="custom-select-option" type="button" role="option" aria-selected="false" data-value="russia">
+                    <span>Russia</span>
+                    <i class="fa-solid fa-check" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
+    </div>
+
+    <div id="custom-dialog" class="dialog-overlay hidden">
+      <div class="dialog-box">
+        <h3 id="dialog-title" class="hidden">Notification</h3>
+        <p id="dialog-message"></p>
+        <div id="dialog-buttons" class="dialog-actions"></div>
+      </div>
+    </div>
+
+    <div id="two-factor-modal" class="dialog-overlay hidden">
+      <div class="dialog-box two-factor-box">
+        <span class="two-factor-kicker">Security Check</span>
+        <h3>Two-Factor Authentication</h3>
+        <p>Enter the code from your authenticator app.</p>
+        <form id="two-factor-form" class="two-factor-form">
+          <input id="two-factor-input" type="text" autocomplete="one-time-code" inputmode="numeric" placeholder="000000" />
+          <div class="dialog-actions">
+            <button id="btn-cancel-2fa" type="button" class="dialog-btn secondary">Cancel</button>
+            <button id="btn-submit-2fa" type="submit" class="dialog-btn primary">Confirm</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </body>
+</html>
