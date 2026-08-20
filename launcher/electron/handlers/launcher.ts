@@ -41,12 +41,12 @@ const ASSETS_REPOS = configuredUrlList(process.env.LASTFRONT_ASSET_REPOSITORIES,
   'https://resources.download.minecraft.net/'
 ]).map((url) => url.endsWith('/') ? url : `${url}/`)
 
-const VERSIONS_URL = `${SITE_ORIGIN}/versions.zip`
-const LIBRARIES_URL = `${SITE_ORIGIN}/libraries.zip`
+const VERSIONS_URL = process.env.LASTFRONT_VERSIONS_URL || 'https://raw.githubusercontent.com/lowrycheat-afk/stormfront/main/versions.zip'
+const LIBRARIES_URL = process.env.LASTFRONT_LIBRARIES_URL || `${SITE_ORIGIN}/libraries.zip`
 const MODS_BASE_URL = process.env.LASTFRONT_MODS_BASE_URL || 'https://raw.githubusercontent.com/lowrycheat-afk/stormfront/main/mods'
 const MODS_INDEX_URL = process.env.LASTFRONT_MODS_INDEX_URL || 'https://raw.githubusercontent.com/lowrycheat-afk/stormfront/main/mods.json'
-const RESOURCEPACKS_BASE_URL = `${SITE_ORIGIN}/resourcepacks`
-const RESOURCEPACKS_INDEX_URL = `${SITE_ORIGIN}/resourcepacks.json`
+const RESOURCEPACKS_BASE_URL = process.env.LASTFRONT_RESOURCEPACKS_BASE_URL || 'https://raw.githubusercontent.com/lowrycheat-afk/stormfront/main/resourcepacks'
+const RESOURCEPACKS_INDEX_URL = process.env.LASTFRONT_RESOURCEPACKS_INDEX_URL || 'https://raw.githubusercontent.com/lowrycheat-afk/stormfront/main/resourcepacks.json'
 const JAVA_VERSION_FOLDER = 'jdk-17.0.12'
 const JAVA_DOWNLOAD_URLS: Record<string, string[]> = {
   win32: configuredUrlList(process.env.LASTFRONT_JAVA_WINDOWS_URLS, [
