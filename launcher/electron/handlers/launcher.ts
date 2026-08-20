@@ -42,7 +42,8 @@ const ASSETS_REPOS = configuredUrlList(process.env.LASTFRONT_ASSET_REPOSITORIES,
 ]).map((url) => url.endsWith('/') ? url : `${url}/`)
 
 const VERSIONS_URL = process.env.LASTFRONT_VERSIONS_URL || 'https://raw.githubusercontent.com/lowrycheat-afk/stormfront/main/versions.zip'
-const LIBRARIES_URL = process.env.LASTFRONT_LIBRARIES_URL || `${SITE_ORIGIN}/libraries.zip`
+const LIBRARIES_BASE_URL = process.env.LASTFRONT_LIBRARIES_BASE_URL || 'https://raw.githubusercontent.com/lowrycheat-afk/stormfront/main/libraries'
+const LIBRARIES_PARTS = configuredUrlList(process.env.LASTFRONT_LIBRARIES_PARTS, ['libraries.zip.001', 'libraries.zip.002', 'libraries.zip.003'])
 const MODS_BASE_URL = process.env.LASTFRONT_MODS_BASE_URL || 'https://raw.githubusercontent.com/lowrycheat-afk/stormfront/main/mods'
 const MODS_INDEX_URL = process.env.LASTFRONT_MODS_INDEX_URL || 'https://raw.githubusercontent.com/lowrycheat-afk/stormfront/main/mods.json'
 const RESOURCEPACKS_BASE_URL = process.env.LASTFRONT_RESOURCEPACKS_BASE_URL || 'https://raw.githubusercontent.com/lowrycheat-afk/stormfront/main/resourcepacks'
@@ -668,6 +669,55 @@ async function checkAndDownloadVersions(mainWindow: BrowserWindow): Promise<void
   }
 }
 
+async function downloadLibrariesZip(mainWindow: BrowserWindow): Promise<void> {
+  const tempZip = path.join(customGamePath, 'libraries.zip')
+  const tempParts = LIBRARIES_PARTS.map((part) => path.join(customGamePath, part))
+
+  try {
+    if (!mainWindow.isDestroyed()) {
+      mainWindow.webContents.send('game:launch_data', 'Downloading libraries...')
+    }
+
+    for (const part of tempParts) {
+      await downloadFileWithProgressFromAny(`${LIBRARIES_BASE_URL}/${path.basename(part)}`, part, mainWindow, 'libraries')
+    }
+
+    for (const part of tempParts) {
+      await new Promise<void>((resolve, reject) => {
+        const input = fs.createReadStream(part)
+        const output = fs.createWriteStream(tempZip, { flags: 'a' })
+        input.on('error', reject)
+        output.on('error', reject)
+        output.on('finish', resolve)
+        input.pipe(output)
+      })
+      fs.unlinkSync(part)
+    }
+
+    if (!mainWindow.isDestroyed()) {
+      mainWindow.webContents.send('game:launch_data', 'Extracting libraries...')
+    }
+
+    const zip = new AdmZip(tempZip)
+    zip.extractAllTo(path.join(customGamePath, 'libraries'), true)
+    fs.unlinkSync(tempZip)
+
+    if (!mainWindow.isDestroyed()) {
+      mainWindow.webContents.send('game:launch_data', 'Libraries installed successfully')
+    }
+  } catch (error) {
+    if (fs.existsSync(tempZip)) {
+      fs.unlinkSync(tempZip)
+    }
+    for (const part of tempParts) {
+      if (fs.existsSync(part)) {
+        fs.unlinkSync(part)
+      }
+    }
+    throw error
+  }
+}
+
 async function checkAndDownloadLibraries(mainWindow: BrowserWindow): Promise<void> {
   const librariesDir = path.join(customGamePath, 'libraries')
   
@@ -678,7 +728,7 @@ async function checkAndDownloadLibraries(mainWindow: BrowserWindow): Promise<voi
     if (!mainWindow.isDestroyed()) {
       mainWindow.webContents.send('game:launch_data', 'Game libraries not found, downloading...')
     }
-    await downloadAndExtractZip(LIBRARIES_URL, customGamePath, mainWindow, 'libraries')
+    await downloadLibrariesZip(mainWindow)
   } else {
     if (!mainWindow.isDestroyed()) {
       mainWindow.webContents.send('game:launch_data', 'Game libraries are present')
