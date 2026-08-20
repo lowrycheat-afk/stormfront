@@ -1,0 +1,217 @@
+[
+  {
+    "name": "AmbientSounds_FORGE_v6.3.8_mc1.20.1.jar",
+    "hash": "87ea0cd8ec56763185ee0db09eec7c676969e4da",
+    "size": 53429226
+  },
+  {
+    "name": "architectury-9.2.14-forge.jar",
+    "hash": "a52918a500ff421180a1cbd1a0cabee712134ec4",
+    "size": 580602
+  },
+  {
+    "name": "cloth-config-11.1.136-forge.jar",
+    "hash": "c65d07748acc57ceb45d53b3964368b84f34d54f",
+    "size": 1181413
+  },
+  {
+    "name": "coroutil-forge-1.20.1-1.3.7.jar",
+    "hash": "7f5f0b62a638b6053c95919cbe8c2bea2e0c93d0",
+    "size": 64187
+  },
+  {
+    "name": "CreativeCore_FORGE_v2.12.37_mc1.20.1.jar",
+    "hash": "63266ada26623903a508b6bdd5486f2b9a33c054",
+    "size": 1144037
+  },
+  {
+    "name": "CullLessLeaves-Reforged-1.20.1-1.0.5.jar",
+    "hash": "71b1603071461e036a3ba2aaeeb52cc10fa3d348",
+    "size": 22474
+  },
+  {
+    "name": "curios-forge-5.14.1+1.20.1.jar",
+    "hash": "452175b95ad3db6ff58bb8968f6bf7a9d1e0f480",
+    "size": 398066
+  },
+  {
+    "name": "dynamic-fps-3.11.4+minecraft-1.20.0-forge.jar",
+    "hash": "43b3e0766a9e7a30651cc01756476657b865b7a2",
+    "size": 402345
+  },
+  {
+    "name": "embeddium-0.3.31+mc1.20.1.jar",
+    "hash": "bb2fa8f3e493af16af9160d049f96c614a1faf2f",
+    "size": 1320675
+  },
+  {
+    "name": "EnhancedVisuals_FORGE_v1.8.28_mc1.20.1.jar",
+    "hash": "032efbb8f0a628d33fe54899145bfcfbbde3e438",
+    "size": 4728080
+  },
+  {
+    "name": "fcp-1.2.0.jar",
+    "hash": "6fe57d73e02798dbec02ba5b5c7ef9f646767e8d",
+    "size": 56092055
+  },
+  {
+    "name": "ferritecore-6.0.1-forge.jar",
+    "hash": "417fb6ce8f52abf40bd9d0390371790f9576f8ba",
+    "size": 123034
+  },
+  {
+    "name": "FPVtoMinecraft-1.20.1-1.1.4.jar",
+    "hash": "6347c8304d0e3f1e12d60d3ac22b9f533cf5f9c2",
+    "size": 4619337
+  },
+  {
+    "name": "fracturepoint-1.20.1-2.3.9-beta-hotfix1-all.jar",
+    "hash": "241b3e6d865205df8c1c103628dd45f143a69edb",
+    "size": 3239472
+  },
+  {
+    "name": "geckolib-forge-1.20.1-4.8.3.jar",
+    "hash": "fead1d1645e16cfa02f39113481ead355230f8fd",
+    "size": 1039047
+  },
+  {
+    "name": "GlitchCore-forge-1.20.1-0.0.1.1.jar",
+    "hash": "bba0b08fe76b28b35243fee53f99d54a18153b53",
+    "size": 87551
+  },
+  {
+    "name": "GPUTape-1.18x-1.21x-1.0.5.1.jar",
+    "hash": "db4a84db628dd668e08898e42e881615d34f0629",
+    "size": 20295
+  },
+  {
+    "name": "IAS-9.0.6+1.20.1-forge.jar",
+    "hash": "5f908e383694bb20c85c26e5c6e4754172d98bbb",
+    "size": 309667
+  },
+  {
+    "name": "Icterine-forge-1.20.0-1-1.3.0.jar",
+    "hash": "55fde23d7602924ba4772d441fb5a78d562be238",
+    "size": 38848
+  },
+  {
+    "name": "itemphysicguns-1.0.3-7686b43.jar",
+    "hash": "109c8d57603fe4e1a464c3e4a876eb41ea56d5fd",
+    "size": 25829
+  },
+  {
+    "name": "ItemPhysicLite_FORGE_v1.6.10_mc1.20.1.jar",
+    "hash": "7176737db20a4deb50bd5624b07ded22acb81fd5",
+    "size": 19504
+  },
+  {
+    "name": "kotlinforforge-4.12.0-all.jar",
+    "hash": "962fdb760409d6d71cbf079235f1ca94e3863a22",
+    "size": 7442998
+  },
+  {
+    "name": "lazydfu-forge-1.20.1-1.0.0.jar",
+    "hash": "d576dad4681e32d51eb88791a2c67b822120fe38",
+    "size": 15295
+  },
+  {
+    "name": "memoryleakfix-forge-1.17+-1.1.5.jar",
+    "hash": "9f60142dd94631800386a16a4ad70ad9e84cd78a",
+    "size": 227925
+  },
+  {
+    "name": "modelfix-1.15.jar",
+    "hash": "5bdda0781bf9dfb5f992a7aa2bee64d5d3fe0b84",
+    "size": 45246
+  },
+  {
+    "name": "notenoughcrashes-4.4.9+1.20.1-forge.jar",
+    "hash": "5d786730c1aee28751d480d497ce893cdff0bb87",
+    "size": 134885
+  },
+  {
+    "name": "player-animation-lib-forge-1.0.2-rc1+1.20.jar",
+    "hash": "16808f94a41d45d8e986b4e4ea6b02ba57fa058a",
+    "size": 181437
+  },
+  {
+    "name": "PresenceFootsteps-1.20.1-1.9.1-beta.1.jar",
+    "hash": "6ccb76043763f929a11f1857a57b41bb70ab7512",
+    "size": 7080698
+  },
+  {
+    "name": "redirected-forge-1.0.0-1.20.1.jar",
+    "hash": "804cb20635bec6d708617fb22e6bd62bed27a7a7",
+    "size": 416660
+  },
+  {
+    "name": "rubidium-extra-0.5.4.4+mc1.20.1-build.131(1).jar",
+    "hash": "bb422d5626bf69841e444a3e545c8e71b6928cf8",
+    "size": 568608
+  },
+  {
+    "name": "seriousplayeranimations-1.1.1.jar",
+    "hash": "71a8848197eab2b580d1f4749df362182105d0f1",
+    "size": 292607
+  },
+  {
+    "name": "sFPV-1.0.jar",
+    "hash": "efe03fb4344dea83a4266a13005530b6880065af",
+    "size": 5630331
+  },
+  {
+    "name": "shadowfront-0.6.33.jar",
+    "hash": "219be29d3fe195e06ff123f89acd009ccea3595b",
+    "size": 30702135
+  },
+  {
+    "name": "sound-physics-remastered-forge-1.20.1-1.5.1.jar",
+    "hash": "944b4673bcab118f411d050b2cd6b693262bb664",
+    "size": 206984
+  },
+  {
+    "name": "spark-1.10.1-forge.jar",
+    "hash": "43f58b410ed6749fd60fd19cc654018f19dc94df",
+    "size": 3151296
+  },
+  {
+    "name": "starlight-1.1.2+forge.1cda73c.jar",
+    "hash": "a915880c7834a0b0f9f300f0e3053deaa9a3205a",
+    "size": 110583
+  },
+  {
+    "name": "superbwarfare-0.8.9-mc1.20.1-6effe4385-all.jar",
+    "hash": "7d98feb5f2a565f8cc0ad5df1fc7a0f56cca7901",
+    "size": 27629951
+  },
+  {
+    "name": "supermartijn642configlib-1.1.8-forge-mc1.20.jar",
+    "hash": "f80f9eed728966adcfbcc848633e789645057281",
+    "size": 206584
+  },
+  {
+    "name": "tacz-LastFront-Edit-optimized.jar",
+    "hash": "9d7cac1287c9ceadd2c70accc96247ec4c4a4924",
+    "size": 51708359
+  },
+  {
+    "name": "txnilib-forge-1.0.24-1.20.1.jar",
+    "hash": "a1e16b7d61f0f16a162d429ee1eab9b4e3eeb9ef",
+    "size": 3743339
+  },
+  {
+    "name": "voicechat-forge-1.20.1-2.6.22.jar",
+    "hash": "ad9179e30cb7b3ffb42b3d9b8e2e9408b473d7fa",
+    "size": 4923439
+  },
+  {
+    "name": "vvp-0.2.1.jar",
+    "hash": "d269fab714a126e78e29c375820f5a02e3583a73",
+    "size": 25833640
+  },
+  {
+    "name": "Zcraft_Decorations-1.0.1-loot.jar",
+    "hash": "a77aa5d2a0dccb6cf9cb67472fd150b833668129",
+    "size": 22312905
+  }
+]
