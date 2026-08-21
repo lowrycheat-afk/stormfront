@@ -1,0 +1,103 @@
+================================================================================
+  SHADOWFRONT (StormFront) — ИНСТРУКЦИЯ ПО ОБФУСКАЦИИ И РАБОТЕ МОДА
+  Версия мода: 0.6.35 | Платформа: Minecraft Forge 1.20.1 (Forge 47.4.10+)
+================================================================================
+
+1. РАБОТА НА КЛИЕНТЕ И НА СЕРВЕРЕ (CLIENT & SERVER COMPATIBILITY)
+--------------------------------------------------------------------------------
+ДА, мод ПОЛНОСТЬЮ РАБОТАЕТ И НА СЕРВЕРЕ (Dedicated Server), И НА КЛИЕНТЕ (Client).
+
+Архитектура мода разделена на три логические части:
+
+[А] СЕРВЕРНАЯ ЧАСТЬ (Server-side):
+  - Авторизация через лаунчер (LauncherAuthService): сервер проверяет HMAC-токен
+    в течение первых 100 тиков после входа игрока. Неавторизованные игроки кикаются.
+  - Игровой цикл и логика матча (MatchService, CapturePointService, SpawnService):
+    подсчет тикетов команд, захват контрольных точек, нейтрализация, таймеры раундов.
+  - База данных (PlayerDatabase): сохранение и чтение опыта (XP), рангов и статы
+    в MySQL/MariaDB в асинхронном пуле потоков.
+  - Режимы арсенала и техники (ArmoryService, VehicleArmoryService, TacticalEquipmentService):
+    выдача оружия, брони, патронов и техники.
+  - Безопасность и правила (FriendlyFireMixin, BlockDestructionMixin, TacZBulletBaseProtectionMixin):
+    защита баз от взрывов, пуль TacZ и снарядов Superb Warfare, запрет огня по своим.
+  - Команды (/lastfront): администрирование матчей, точек, спавнов, баз.
+
+[Б] КЛИЕНТСКАЯ ЧАСТЬ (Client-side):
+  - Все экраны UI (PjmBaseScreen, SquadScreen, TeamSelectionScreen, ArmoryScreen,
+    VehicleArmoryScreen, LastFrontMainMenuScreen, LastFrontPauseScreen).
+  - Тактический HUD и компас (ClientHud): отрисовка полосы выносливости, киллфида,
+    счета команд, статуса точек, 3D-маркеров и компасной ленты.
+  - Горячие клавиши (LastFrontKeys): вызов карты (M), арсенала (H), техники (K), пинга.
+  - Discord Rich Presence (LastFrontRPC): статус игрока в Discord.
+  - Изоляция клиентского кода: классы зарегистрированы с @EventBusSubscriber(value = Dist.CLIENT)
+    и вызываются через DistExecutor.unsafeRunWhenOn(Dist.CLIENT, ...). Это исключает любые
+    ошибки ClassNotFoundException на выделенном сервере.
+
+[В] СЕТЕВОЙ ПРОТОКОЛ (NetworkHandler):
+  - Канал Forge SimpleChannel ("lastfront:main", протокол v7).
+  - Синхронизация состояния матча (GameStatePacket — PLAY_TO_CLIENT).
+  - Выбор команды, экипировки, техники, пинги (PLAY_TO_SERVER).
+  - Токен лаунчера (LauncherAuthPacket — PLAY_TO_SERVER id 15).
+
+
+================================================================================
+2. КАК УСТРОЕНА ОБФУСКАЦИЯ PROGUARD
+================================================================================
+Для защиты интеллектуальной собственности и предотвращения декомпиляции
+используется ProGuard (через плагин com.guardsquare:proguard-gradle:7.5.0).
+
+Файл правил: proguard-rules.pro
+Конфигурация в Gradle: build.gradle (задача obfuscateJar)
+
+Что СОХРАНЯЕТСЯ открытым (Keep Rules):
+  1. Точка входа Forge: класс ru.lastfront.LastFrontMod с аннотацией @Mod("lastfront").
+  2. Подписчики шины событий: классы с @EventBusSubscriber и методы с @SubscribeEvent.
+  3. Все миксины: ru.lastfront.mixin.* (требуются для SpongePowered Mixin в lastfront.mixins.json).
+  4. Сетевые пакеты: ru.lastfront.network.* (требуются для сериализации SimpleChannel).
+  5. Конфигурация: ru.lastfront.config.LastFrontConfig и сохраненные данные NBT LastFrontSavedData.
+
+Что ПОЛНОСТЬЮ ОБФУСЦИРУЕТСЯ И СКРЫВАЕТСЯ:
+  - Все игровые сервисы (MatchService, CapturePointService, SpawnService, FactionService,
+    RankService, PlayerStatsService, ArmoryService, VehicleService, AmmoBoxService и др.).
+  - Все экраны интерфейса (ArmoryHubScreen, SquadScreen, TeamSelectionScreen, UI-утилиты).
+  - Код работы с базой данных (PlayerDatabase), запросы SQL, хэширование, вычисления.
+  - Все классы перемещаются в пакет ru.lastfront.obf.* и переименовываются в однобуквенные
+    идентификаторы (a.class, b.class, c.class... E.class, M.class, R.class).
+  - Внутренние методы и поля сжимаются и переименовываются (-overloadaggressively,
+    -useuniqueclassmembernames, -allowaccessmodification).
+
+
+================================================================================
+3. ИНСТРУКЦИЯ ПО СБОРКЕ И ОБНОВЛЕНИЮ МОДА
+================================================================================
+
+[Шаг 1] Сборка обфусцированного JAR:
+  В папке shadowfront выполните:
+    .\gradlew.bat obfuscateJar
+  или полную сборку:
+    .\gradlew.bat build
+
+  Результат сборки появится в:
+    shadowfront\build\libs\shadowfront-0.6.35-obf.jar
+
+[Шаг 2] Обновление для клиентов (GitHub / Лаунчер):
+  1. Скопировать shadowfront-0.6.35-obf.jar:
+     - в папку: загрузить-в-dropbox\mods\shadowfront-0.6.35.jar
+     - в папку: mods-github\mods\shadowfront-0.6.35.jar
+  2. Пересчитать хэши:
+     В папке загрузить-в-dropbox выполнить:
+       node обновить-индексы.cjs
+     Скопировать получившийся mods.json в папку mods-github\mods.json
+  3. Запушить в репозиторий GitHub (lowrycheat-afk/stormfront):
+     В папке mods-github выполнить:
+       git config http.version HTTP/1.1
+       git add .
+       git commit -m "Update shadowfront 0.6.35 obfuscated"
+       git push --no-thin origin main
+
+[Шаг 3] Обновление на сервере (VPS):
+  1. Загрузить обфусцированный JAR на сервер:
+     node C:\Users\bandar\AppData\Local\Temp\opencode\ssh-helper\upload.js "c:\Users\bandar\Desktop\все\shadowfront\build\libs\shadowfront-0.6.35-obf.jar" /home/serv/mods/shadowfront-0.6.35.jar
+  2. Перезапустить сервер Minecraft на VPS:
+     (screen -dmS mcshard sh run.sh nogui)
+================================================================================
