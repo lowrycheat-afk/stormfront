@@ -1,23 +1,18 @@
 [
   {
+    "name": "AmbientSounds_FORGE_v6.0.2_mc1.20.1.jar",
+    "hash": "d0537b3986a3c9c0b83d5ee341e698daa9c7c20b",
+    "size": 85328168
+  },
+  {
     "name": "AmbientSounds_FORGE_v6.3.8_mc1.20.1.jar",
     "hash": "87ea0cd8ec56763185ee0db09eec7c676969e4da",
     "size": 53429226
   },
   {
-    "name": "architectury-9.2.14-forge.jar",
-    "hash": "a52918a500ff421180a1cbd1a0cabee712134ec4",
-    "size": 580602
-  },
-  {
-    "name": "cloth-config-11.1.136-forge.jar",
-    "hash": "c65d07748acc57ceb45d53b3964368b84f34d54f",
-    "size": 1181413
-  },
-  {
-    "name": "coroutil-forge-1.20.1-1.3.7.jar",
-    "hash": "7f5f0b62a638b6053c95919cbe8c2bea2e0c93d0",
-    "size": 64187
+    "name": "CreativeCore_FORGE_v2.11.33_mc1.20.1.jar",
+    "hash": "d911909099b38896a8753dd3c44f1bb3a2a345ad",
+    "size": 1114431
   },
   {
     "name": "CreativeCore_FORGE_v2.12.37_mc1.20.1.jar",
@@ -28,6 +23,76 @@
     "name": "CullLessLeaves-Reforged-1.20.1-1.0.5.jar",
     "hash": "71b1603071461e036a3ba2aaeeb52cc10fa3d348",
     "size": 22474
+  },
+  {
+    "name": "CustomNPCs-1.20.1-GBPort-Unofficial-20240709.jar",
+    "hash": "0f05a1b716d093ce251521b21029775feb03be7b",
+    "size": 10560979
+  },
+  {
+    "name": "EnhancedVisuals_FORGE_v1.8.28_mc1.20.1.jar",
+    "hash": "032efbb8f0a628d33fe54899145bfcfbbde3e438",
+    "size": 4728080
+  },
+  {
+    "name": "FPVtoMinecraft-1.20.1-1.1.4.jar",
+    "hash": "6347c8304d0e3f1e12d60d3ac22b9f533cf5f9c2",
+    "size": 4619337
+  },
+  {
+    "name": "GPUTape-1.18x-1.21x-1.0.5.1.jar",
+    "hash": "db4a84db628dd668e08898e42e881615d34f0629",
+    "size": 20295
+  },
+  {
+    "name": "GlitchCore-forge-1.20.1-0.0.1.1.jar",
+    "hash": "bba0b08fe76b28b35243fee53f99d54a18153b53",
+    "size": 87551
+  },
+  {
+    "name": "Icterine-forge-1.20.0-1-1.3.0.jar",
+    "hash": "55fde23d7602924ba4772d441fb5a78d562be238",
+    "size": 38848
+  },
+  {
+    "name": "Kiwi-1.20.1-Forge-11.8.20.jar",
+    "hash": "4b38a5d5e38f35d4e5685b117e9cf0f247070296",
+    "size": 1611987
+  },
+  {
+    "name": "PassableFoliage-1.20.1-forge-8.2.1.jar",
+    "hash": "5c6c739ce9bf34e6b434503190ff4c109986ba19",
+    "size": 30618
+  },
+  {
+    "name": "PresenceFootsteps-1.20.1-1.9.1-beta.1.jar",
+    "hash": "6ccb76043763f929a11f1857a57b41bb70ab7512",
+    "size": 7080698
+  },
+  {
+    "name": "Zcraft_Decorations-1.0.1-loot.jar",
+    "hash": "a77aa5d2a0dccb6cf9cb67472fd150b833668129",
+    "size": 22312905
+  },
+  {
+    "name": "architectury-9.2.14-forge.jar",
+    "hash": "a52918a500ff421180a1cbd1a0cabee712134ec4",
+    "size": 580602
+  },
+  {
+    "name": "cloth-config-11.1.118-forge.jar",
+    "hash": "c46ca3fba95691873a765f4e79750c615f33e446",
+    "size": 1168391
+  },
+  {
+    "name": "cloth-config-11.1.136-forge.jar",
+    "hash": "c65d07748acc57ceb45d53b3964368b84f34d54f",
+    "size": 1181413
+  },
+  {
+    "name": "coroutil-forge-1.20.1-1.3.7.jar",
+    "hash": "7f5f0b62a638b6053c95919cbe8c2bea2e0c93d0",
+    "size": 64187
   },
   {
     "name": "curios-forge-5.14.1+1.20.1.jar",
@@ -45,11 +110,6 @@
     "size": 1320675
   },
   {
-    "name": "EnhancedVisuals_FORGE_v1.8.28_mc1.20.1.jar",
-    "hash": "032efbb8f0a628d33fe54899145bfcfbbde3e438",
-    "size": 4728080
-  },
-  {
     "name": "fcp-1.2.0.jar",
     "hash": "6fe57d73e02798dbec02ba5b5c7ef9f646767e8d",
     "size": 56092055
@@ -60,9 +120,9 @@
     "size": 123034
   },
   {
-    "name": "FPVtoMinecraft-1.20.1-1.1.4.jar",
-    "hash": "6347c8304d0e3f1e12d60d3ac22b9f533cf5f9c2",
-    "size": 4619337
+    "name": "firstaid-1.20.1-1.1.jar",
+    "hash": "afebe3773bd8b3f902ef54c3c98864bfb0d1e00e",
+    "size": 450159
   },
   {
     "name": "fracturepoint-1.20.1-2.3.9-beta-hotfix1-all.jar",
@@ -70,49 +130,24 @@
     "size": 3239472
   },
   {
+    "name": "geckolib-forge-1.20.1-4.4.7.jar",
+    "hash": "45c64abcf016587528f5f6bc22b37f02e24e5442",
+    "size": 991110
+  },
+  {
     "name": "geckolib-forge-1.20.1-4.8.3.jar",
     "hash": "fead1d1645e16cfa02f39113481ead355230f8fd",
     "size": 1039047
   },
   {
-    "name": "GlitchCore-forge-1.20.1-0.0.1.1.jar",
-    "hash": "bba0b08fe76b28b35243fee53f99d54a18153b53",
-    "size": 87551
-  },
-  {
-    "name": "GPUTape-1.18x-1.21x-1.0.5.1.jar",
-    "hash": "db4a84db628dd668e08898e42e881615d34f0629",
-    "size": 20295
-  },
-  {
-    "name": "IAS-9.0.6+1.20.1-forge.jar",
-    "hash": "5f908e383694bb20c85c26e5c6e4754172d98bbb",
-    "size": 309667
-  },
-  {
-    "name": "Icterine-forge-1.20.0-1-1.3.0.jar",
-    "hash": "55fde23d7602924ba4772d441fb5a78d562be238",
-    "size": 38848
-  },
-  {
-    "name": "itemphysicguns-1.0.3-7686b43.jar",
-    "hash": "109c8d57603fe4e1a464c3e4a876eb41ea56d5fd",
-    "size": 25829
-  },
-  {
-    "name": "ItemPhysicLite_FORGE_v1.6.10_mc1.20.1.jar",
-    "hash": "7176737db20a4deb50bd5624b07ded22acb81fd5",
-    "size": 19504
+    "name": "gundurability-1.2.1-forge-1.20.1.jar",
+    "hash": "518435d03b61c5ec2116e28e6a28fad280f6f90a",
+    "size": 336180
   },
   {
     "name": "kotlinforforge-4.12.0-all.jar",
     "hash": "962fdb760409d6d71cbf079235f1ca94e3863a22",
     "size": 7442998
-  },
-  {
-    "name": "lazydfu-forge-1.20.1-1.0.0.jar",
-    "hash": "d576dad4681e32d51eb88791a2c67b822120fe38",
-    "size": 15295
   },
   {
     "name": "memoryleakfix-forge-1.17+-1.1.5.jar",
@@ -135,11 +170,6 @@
     "size": 181437
   },
   {
-    "name": "PresenceFootsteps-1.20.1-1.9.1-beta.1.jar",
-    "hash": "6ccb76043763f929a11f1857a57b41bb70ab7512",
-    "size": 7080698
-  },
-  {
     "name": "redirected-forge-1.0.0-1.20.1.jar",
     "hash": "804cb20635bec6d708617fb22e6bd62bed27a7a7",
     "size": 416660
@@ -150,14 +180,14 @@
     "size": 568608
   },
   {
-    "name": "seriousplayeranimations-1.1.1.jar",
-    "hash": "71a8848197eab2b580d1f4749df362182105d0f1",
-    "size": 292607
-  },
-  {
     "name": "sFPV-1.0.jar",
     "hash": "efe03fb4344dea83a4266a13005530b6880065af",
     "size": 5630331
+  },
+  {
+    "name": "seriousplayeranimations-1.1.1.jar",
+    "hash": "71a8848197eab2b580d1f4749df362182105d0f1",
+    "size": 292607
   },
   {
     "name": "shadowfront-0.6.35.jar",
@@ -208,15 +238,5 @@
     "name": "vvp-0.2.1.jar",
     "hash": "d269fab714a126e78e29c375820f5a02e3583a73",
     "size": 25833640
-  },
-  {
-    "name": "Zcraft_Decorations-1.0.1-loot.jar",
-    "hash": "a77aa5d2a0dccb6cf9cb67472fd150b833668129",
-    "size": 22312905
-  },
-  {
-    "name": "firstaid-1.20.1-1.1.jar",
-    "hash": "afebe3773bd8b3f902ef54c3c98864bfb0d1e00e",
-    "size": 450159
   }
 ]
